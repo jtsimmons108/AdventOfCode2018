@@ -1,24 +1,21 @@
 package utilities;
 
-import problems.Day1;
+import problems.Day2;
 
 public class ProblemSolver {
 
 	public static void main(String[] args) {
 		
-		Problem currentDay = new Day1();
+		Problem currentDay = new Day2();
 		
-		for(int i = 0; i < 10; i++) {
-			long start = System.currentTimeMillis();
-			currentDay.solvePart1();
-			System.out.printf("Time: %d\n", System.currentTimeMillis() - start);
-		}
+		System.out.println(currentDay.getPart1Solution());
+		System.out.println(currentDay.getPart2Solution());
 		
-		for(int i = 0; i < 10; i++) {
-			long start = System.currentTimeMillis();
-			currentDay.solvePart2();
-			System.out.printf("Time: %d\n", System.currentTimeMillis() - start);
-		}
+		System.out.println(String.format("Average run time: %.2f ms", 
+				currentDay.getAverageRunTimePart1(10)));
+		System.out.println(String.format("Average run time: %.2f ms", 
+				currentDay.getAverageRunTimePart2(10)));
+		
 		
 		
 	}

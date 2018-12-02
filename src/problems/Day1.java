@@ -9,22 +9,18 @@ import utilities.Problem;
 
 public class Day1 extends Problem{
 
-	public Day1() {
-		super(1);
-	}
-
 	@Override
-	public void solvePart1() {
+	public String getPart1Solution() {
 		int result = getInput().stream()
-				.mapToInt(num -> Integer.parseInt(num))
+				.mapToInt(Integer::parseInt)
 				.sum();
-		System.out.println(result);			
+		return String.valueOf(result);		
 	}
 
 	@Override
-	public void solvePart2() {
+	public String getPart2Solution() {
 		List<Integer> sigs = getInput().stream()
-				.map(num -> Integer.parseInt(num))
+				.map(Integer::parseInt)
 				.collect(Collectors.toList());
 		
 		Set<Integer> freqs = new HashSet<>();
@@ -35,7 +31,7 @@ public class Day1 extends Problem{
 			total += sigs.get(index);
 			index = (index + 1) % sigs.size();
 		}
-		System.out.println(total);
+		return String.valueOf(total);
 	}
 
 	
