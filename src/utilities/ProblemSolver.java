@@ -1,12 +1,12 @@
 package utilities;
 
-import problems.Day4;
+import problems.Day9;
 
 public class ProblemSolver {
 
 	public static void main(String[] args) {
 		
-		Problem currentDay = new Day4();
+		Problem currentDay = new Day9();
 		
 		System.out.println(currentDay.getPart1Solution());
 		System.out.println(currentDay.getPart2Solution());
