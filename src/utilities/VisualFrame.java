@@ -1,23 +1,23 @@
 package utilities;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Graphics;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 
-import problems.Day6;
+import problems.Day10;
 
 public class VisualFrame extends JFrame {
 
 	private JPanel contentPane;
-
+	
 	/**
 	 * Launch the application.
 	 */
@@ -38,36 +38,43 @@ public class VisualFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public VisualFrame() {
+		final int WIDTH = 400, HEIGHT = 300;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 800, 800);
-		contentPane = new JPanel() {
-
-			@Override
-			public void paint(Graphics g) {
-				Random r = new Random();
-				Day6 day = new Day6();
-				day.getPart1Solution();
-				int[][] grid = day.getGrid();
-				
-				Map<Integer, Color> colors = new HashMap<>();
-				colors.put(-1, Color.BLACK);
-				for(int x = 0; x < grid.length; x++) {
-					for(int y = 0; y < grid.length; y++) {
-						int val = grid[y][x];
-						if (!colors.containsKey(val)) {
-							colors.put(val, new Color(r.nextFloat(), r.nextFloat(), r.nextFloat()));
-						}
-						g.setColor(colors.get(val));
-						g.fillRect(2*x, 2*y, 2, 2);
-					}
-				}
-			}
-			
-		};
+		setBounds(50, 50, WIDTH, HEIGHT);
+		contentPane = new MovingPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
+	}
+	
+	private class MovingPanel extends JPanel{
+		private List<MovingPoint> points = new Day10().points;
+		private Timer timer;
+		int time = 0;
+		
+		public MovingPanel() {
+			for(MovingPoint p : points) {
+				p.move(10775);
+			}
+		}
+		
+		
+		@Override
+		public void paint(Graphics g) {
+			for(MovingPoint p : points) {
+				drawPoint(p, g);
+			}
+		}
+		public void movePoints(int times) {
+			for(MovingPoint p : points) {
+				p.move(times);
+			}
+		}
+		public void drawPoint(MovingPoint p, Graphics g) {
+			
+			g.fillRect(p.x, p.y, 2,2);
+		}
 	}
 
 }

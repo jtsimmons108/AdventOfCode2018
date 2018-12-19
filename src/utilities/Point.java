@@ -11,6 +11,8 @@ public class Point {
 	}
 	
 	
+	
+	
 	public int getTaxiCabDistance(Point other) {
 		return Math.abs(this.x - other.x) + Math.abs(this.y-other.y);
 	}

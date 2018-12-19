@@ -12,19 +12,17 @@ public class Day5 extends Problem{
 	
 	@Override
 	public String getPart1Solution() {
-		return String.valueOf(react(polymer).length());
+		return String.valueOf(react(polymer)
+				.length());
 	}
 
 	@Override
 	public String getPart2Solution() {
-		String alphabet = "abcdefghijklmopqrstuvwxyz";
 		int least = Integer.MAX_VALUE;
-		for (char c : alphabet.toCharArray()) {
-			String testPolymer = polymer.replaceAll("[" + c + Character.toUpperCase(c)+"]", "");
+		for (int i = 0; i < 26; i++) {
+			String testPolymer = polymer.replaceAll("[" + (char)('A' + i) + (char)('a' + i) +"]", "");
 			String result = react(testPolymer);
-			if(result.length() < least) {
-				least = result.length();
-			}
+			least = Math.min(result.length(), least);
 		}
 		return String.valueOf(least);
 	}

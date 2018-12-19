@@ -1,6 +1,7 @@
 package utilities;
 
 import problems.Day1;
+import problems.Day10;
 import problems.Day2;
 import problems.Day3;
 import problems.Day4;
@@ -8,6 +9,7 @@ import problems.Day5;
 import problems.Day6;
 import problems.Day7;
 import problems.Day8;
+import problems.Day9;
 
 public class CumulativeProblemInfo {
 
@@ -22,7 +24,8 @@ public class CumulativeProblemInfo {
 							new Day5(),
 							new Day6(),
 							new Day7(), 
-							new Day8()
+							new Day8(),
+							new Day9()
 							
 		};
 		

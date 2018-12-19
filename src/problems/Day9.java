@@ -53,7 +53,7 @@ class Marble
 			next = this;
 		}
 	}
-
+	
 	public Marble insertAfter(int value) {
 		Marble marble = new Marble(value);
 		marble.previous = this;
